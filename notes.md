@@ -1,4 +1,4 @@
-## NIH
+## <a name="nih"></a>NIH
 
 Might as well roll my own on the off chance it's not too bad. Major benefits
 being that I can keep my framework free of fucking panics.
@@ -9,7 +9,7 @@ Isn't really an ORM but some sugar for database/sql - [github](https://github.co
 Bonus points in that jmoiron hangs out in #go-nuts and seems generally
 friendly.
 
-## gorm
+## <a name="gorm"></a>gorm
 
 *In Progress*
 
@@ -59,7 +59,7 @@ management an accurate representation is important for query generation. This
 means that the issues around the ability to accurately encode this into a single
 point of our code has correctness and simplicity of our codebase.
 
-## gorp
+## <a name="gorp"></a>gorp
 
 *gorp* is a small library focused on mapping structs into a relational database.
 It eschews trying to do anything with relationships. The version evaluated here
@@ -114,7 +114,7 @@ in most cases.
 I really like the fact that it's logging is `log.Logger` compatible as we can
 just assign it to a `db` topic and call it done.
 
-## Beego
+## <a name="beego"></a>Beego
 
 Beego is a framework targeting the whole suite of problems involved in building
 a go-backed webapp. There is structure for defining models, views, routes,
