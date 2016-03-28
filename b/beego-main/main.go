@@ -3,19 +3,20 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/falun/hellorm/b"
 	"time"
+
+	"github.com/falun/hellorm"
+	"github.com/falun/hellorm/b"
 
 	"github.com/astaxie/beego/orm"
 	_ "github.com/lib/pq"
-	"github.com/turbinelabs/tbn/idgen"
 )
 
 func init() {
 }
 
 var (
-	mkID      = idgen.NewUUID()
+	mkID      = hellorm.MkID
 	orgID     = "9cd24183-f848-48f8-6f55-0f07240700b9"
 	falunID   = "b1d2f07b-5eed-45e8-4bdb-bcbcdec4e05e"
 	altID     = "d0c103c4-e471-48f7-5447-9e828bdc12b5"
@@ -25,10 +26,7 @@ var (
 )
 
 func insertNewItem() {
-	newKey, _ := mkID()
-	key := string(newKey)
-
-	org := &b.Org{Key: key, Name: "SomeCo", ContactEmail: "admin@someco.io"}
+	org := &b.Org{Key: mkID(), Name: "SomeCo", ContactEmail: "admin@someco.io"}
 
 	orm := orm.NewOrm()
 	n, err := orm.Insert(org)
@@ -132,12 +130,15 @@ func main() {
 		dbPass = ""
 		dbHost = ""
 		db     = ""
+		ex     = ""
 	)
 
 	flag.StringVar(&dbUser, "u", "", "set database username")
 	flag.StringVar(&dbPass, "p", "", "set database password")
 	flag.StringVar(&dbHost, "h", "localhost", "host running database")
 	flag.StringVar(&db, "d", "", "set database")
+	flag.StringVar(&ex, "ex", "", "which example to run")
+	flag.Parse()
 
 	orm.RegisterDriver("postgres", orm.DRPostgres)
 	orm.RegisterDataBase(
@@ -154,5 +155,16 @@ func main() {
 	)
 
 	fmt.Println("-")
-	orm.RunCommand()
+	switch ex {
+	case "insert":
+		insertNewItem()
+	case "update":
+		fullUpdateObject()
+	case "conditional-update":
+		conditionalAndPartialUpdateObject()
+	case "load-related":
+		queryAndLoadRelatedObjects()
+	default:
+		orm.RunCommand()
+	}
 }
