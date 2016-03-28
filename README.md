@@ -14,6 +14,6 @@ of go behind me at the time of this survey.
 ### The libraries:
 
 * [NIH](./notes.md#nih) - :sob:, just wirte something from scratch (TBD)
-* [gorm](./notes.md#gorm) - *in progress*
+* [gorm](./notes.md#gorm) - Completed; code under `./gm`
 * [gorp](./notes.md#gorp) - Completed; code under `./g`
 * [beego/orm](./notes.md#beego) - Completed; code under `./b`
