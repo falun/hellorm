@@ -13,7 +13,7 @@ of go behind me at the time of this survey.
 
 ### The libraries:
 
-* [ryo](./notes.md#ryo) - Completed enough; code under `./ryo` (ryo => "roll your own")
+* [ryo](./notes.md#ryo) - Completed enough; code under `./ryo`
 * [gorm](./notes.md#gorm) - Completed; code under `./gm`
 * [gorp](./notes.md#gorp) - Completed; code under `./g`
 * [beego/orm](./notes.md#beego) - Completed; code under `./b`
